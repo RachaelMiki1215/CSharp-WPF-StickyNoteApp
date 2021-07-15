@@ -1,0 +1,88 @@
+﻿<Window x:Class="WPFStickyNoteApp.MainWindow"
+        x:Name="stickyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFStickyNoteApp"
+        mc:Ignorable="d"
+        Title="Sticky Note" 
+        Height="300" Width="300"
+        MinHeight="150" MinWidth="150"
+        WindowStyle="None" WindowState="Normal"
+        BorderThickness="0" 
+        AllowsTransparency="True"
+        Background="Transparent"
+        FontFamily="Century Gothic"
+        Foreground="Black" Topmost="False">
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="5"
+                      CaptionHeight="0" />
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <Border Height="Auto" Width="Auto" x:Name="WindowShape"
+                CornerRadius="20">
+            <Border.Background>
+                <SolidColorBrush Color="{Binding ElementName=ColorPickerWheel, Path=TextAreaColor}" />
+            </Border.Background>
+        </Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border BorderThickness="0" CornerRadius="20,20,0,0">
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding ElementName=ColorPickerWheel, Path=SelColor}" />
+                    </Border.Background>
+                </Border>
+                <DockPanel Style="{StaticResource TitleBarDockPanel}"
+                           Margin="5" LastChildFill="True"
+                           MouseDown="DockPanel_MouseDown">
+                    <Button x:Name="Button_CloseApp" 
+                            DockPanel.Dock="Right" Style="{StaticResource RoundButton}" 
+                            Height="Auto"
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                            Background="Transparent" Margin="2,0,2,0"
+                            Click="Button_Close_Click">
+                        <Label Content="X" HorizontalContentAlignment="Center"
+                               Foreground="White" FontSize="16"/>
+                    </Button>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource RoundButton}" 
+                            Height="Auto" 
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                            Background="Transparent" Margin="2,0,2,0"
+                            Click="Button_NewWindow_Click" />
+                    <Button DockPanel.Dock="Right" Style="{StaticResource RoundButton}" 
+                            Height="Auto" 
+                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                            Background="Transparent" Margin="2,0,2,0"
+                            Click="Button_PinWindowToTopToggle_Click" Content="pin" />
+                    <TextBox DockPanel.Dock="Left"
+                             Style="{StaticResource TitleBarTextBox}"
+                             Text="{Binding ElementName=stickyWindow,Path=Title}"
+                             FontWeight="Bold"
+                             Foreground="{Binding ElementName=stickyWindow,Path=Foreground}"
+                             CaretBrush="{Binding Foreground, RelativeSource={RelativeSource Self}}"
+                             FontSize="18" BorderThickness="0"
+                             Margin="5,0,0,0" VerticalContentAlignment="Center" 
+                             Width="Auto" MinWidth="100" />
+                    <Rectangle DockPanel.Dock="Left"
+                               Fill="Transparent"
+                               Width="Auto" Height="Auto" />
+                </DockPanel>
+            </Grid>
+            <RichTextBox Grid.Row="1" Background="Transparent"
+                         BorderThickness="0" Margin="10"
+                         SpellCheck.IsEnabled="True" FontSize="14"
+                         VerticalScrollBarVisibility="Auto" />
+        </Grid>
+        <Canvas Width="100" Height="100" Background="Transparent"
+                Visibility="{Binding BGColorPickerVisibility}">
+            <local:RBColorPicker x:Name="ColorPickerWheel" LostFocus="ColorPickerWheel_LostFocus" />
+        </Canvas>
+    </Grid>
+
+</Window>

@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="WPFStickyNoteApp.RBColorPicker"
+             x:Name="RBColorPickerFrame"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFStickyNoteApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100"
+             Focusable="True">
+    
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="SolidColorBrush1" Color="{Binding Color_01}" />
+        <SolidColorBrush x:Key="SolidColorBrush2" Color="{Binding Color_02}" />
+        <SolidColorBrush x:Key="SolidColorBrush3" Color="{Binding Color_03}" />
+        <SolidColorBrush x:Key="SolidColorBrush4" Color="{Binding Color_04}" />
+        <SolidColorBrush x:Key="SolidColorBrush5" Color="{Binding Color_05}" />
+        <SolidColorBrush x:Key="SolidColorBrush6" Color="{Binding Color_06}" />
+        <SolidColorBrush x:Key="SolidColorBrush7" Color="{Binding Color_07}" />
+        <SolidColorBrush x:Key="SolidColorBrush8" Color="{Binding Color_08}" />
+        <SolidColorBrush x:Key="SolidColorBrush9" Color="{Binding Color_09}" />
+        <SolidColorBrush x:Key="SolidColorBrush10" Color="{Binding Color_10}" />
+        <SolidColorBrush x:Key="SolidColorBrush11" Color="{Binding Color_11}" />
+        <SolidColorBrush x:Key="SolidColorBrush12" Color="{Binding Color_12}" />
+        <SolidColorBrush x:Key="SelColorBrush" Color="{Binding SelColor}" />
+
+        <Style TargetType="{x:Type local:RBPieGeometry}">
+            <Setter Property="Size" Value="100" />
+            <Setter Property="PieAngle" Value="30" />
+            <EventSetter Event="MouseDown" Handler="RBPieGeometry_MouseDown" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand" />
+                    <!-- Setter Property="Stroke" Value="White" / -->
+                    <!-- Setter Property="StrokeThickness" Value="3" / -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Ellipse Width="100" Height="100" Fill="White" />
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <local:RBPieGeometry RotationAngle="-15"
+                                 Fill="{StaticResource SolidColorBrush1}" 
+                                  />
+            <local:RBPieGeometry RotationAngle="15"
+                                 Fill="{StaticResource SolidColorBrush2}"
+                                  />
+            <local:RBPieGeometry RotationAngle="45"
+                                 Fill="{StaticResource SolidColorBrush3}" 
+                                  />
+            <local:RBPieGeometry RotationAngle="75"
+                                 Fill="{StaticResource SolidColorBrush4}" 
+                                  />
+            <local:RBPieGeometry RotationAngle="105"
+                                 Fill="{StaticResource SolidColorBrush5}" 
+                                  />
+            <local:RBPieGeometry RotationAngle="135"
+                                 Fill="{StaticResource SolidColorBrush6}"
+                                  />
+            <local:RBPieGeometry RotationAngle="165"
+                                 Fill="{StaticResource SolidColorBrush7}"
+                                  />
+            <local:RBPieGeometry RotationAngle="195"
+                                 Fill="{StaticResource SolidColorBrush8}"
+                                  />
+            <local:RBPieGeometry RotationAngle="225"
+                                 Fill="{StaticResource SolidColorBrush9}"
+                                  />
+            <local:RBPieGeometry RotationAngle="255"
+                                 Fill="{StaticResource SolidColorBrush10}"
+                                  />
+            <local:RBPieGeometry RotationAngle="285"
+                                 Fill="{StaticResource SolidColorBrush11}"
+                                  />
+            <local:RBPieGeometry RotationAngle="315"
+                                 Fill="{StaticResource SolidColorBrush12}"
+                                  />
+        </Grid>
+        <Ellipse Width="60" Height="60" Fill="{StaticResource SelColorBrush}" 
+                 StrokeThickness="5" Stroke="White" />
+    </Grid>
+</UserControl>
