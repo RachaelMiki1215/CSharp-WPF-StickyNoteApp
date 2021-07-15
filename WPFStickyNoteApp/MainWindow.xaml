@@ -80,8 +80,9 @@
             <RichTextBox Grid.Row="1" Background="Transparent"
                          BorderThickness="0" Margin="10"
                          SpellCheck.IsEnabled="True" FontSize="14"
-                         VerticalScrollBarVisibility="Auto">
-            </RichTextBox>
+                         VerticalScrollBarVisibility="Auto"
+                         Block.LineHeight="2" Block.TextAlignment="Left" 
+                         AutoWordSelection="True" />
             <!-- TODO: Add logic to change font size on Ctrl + +/- -->
         </Grid>
         <Canvas Width="100" Height="100" Background="Transparent"
