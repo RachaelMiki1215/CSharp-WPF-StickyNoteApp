@@ -78,6 +78,7 @@
                          BorderThickness="0" Margin="10"
                          SpellCheck.IsEnabled="True" FontSize="14"
                          VerticalScrollBarVisibility="Auto" />
+            <!-- TODO: Add logic to change font size on Ctrl + +/- -->
         </Grid>
         <Canvas Width="100" Height="100" Background="Transparent"
                 Visibility="{Binding BGColorPickerVisibility}">
