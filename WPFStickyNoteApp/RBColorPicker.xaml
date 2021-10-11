@@ -1,4 +1,5 @@
-﻿<UserControl x:Class="WPFStickyNoteApp.RBColorPicker"
+﻿<!-- Inspo from https://htmlcolorcodes.com/color-picker/ -->
+    <UserControl x:Class="WPFStickyNoteApp.RBColorPicker"
              x:Name="RBColorPickerFrame"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
